@@ -23,8 +23,8 @@
                 <td>{{ artwork.description }}</td>
                 <td>{{ artwork.image }}</td>
                 <td>
-                    <a href="{{ path('artwork.show', {'id': artwork.id}) }}">show</a>
-                    <a href="{{ path('artwork.edit', {'id': artwork.id}) }}">edit</a>
+                    <a href="{{ path('admin.artwork.show', {'id': artwork.id}) }}">show</a>
+                    <a href="{{ path('admin.artwork.form.update', {'id': artwork.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('artwork.new') }}">Create new</a>
+    <a href="{{ path('admin.artwork.form') }}">Create new</a>
 {% endblock %}

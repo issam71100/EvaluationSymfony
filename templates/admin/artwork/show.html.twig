@@ -26,9 +26,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('artwork.index') }}">back to list</a>
+    <a href="{{ path('admin.artwork.index') }}">back to list</a>
 
-    <a href="{{ path('artwork.edit', {'id': artwork.id}) }}">edit</a>
+    <a href="{{ path('admin.artwork.form.update', {'id': artwork.id}) }}">edit</a>
 
     {{ include('artwork/_delete_form.html.twig') }}
 {% endblock %}

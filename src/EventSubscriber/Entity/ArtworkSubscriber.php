@@ -83,7 +83,6 @@ class ArtworkSubscriber implements EventSubscriber
 
 	public function preUpdate(LifecycleEventArgs $args): void
 	{
-		die();
 		// par défaut, les souscripteurs écoutent toutes les entités
 		$entity = $args->getObject();
 

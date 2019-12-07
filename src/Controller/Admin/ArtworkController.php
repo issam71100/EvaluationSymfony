@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArtworkController extends AbstractController
 {
     /**
-     * @Route("/", name="artwork.index", methods={"GET"})
+     * @Route("/", name="admin.artwork.index", methods={"GET"})
      */
     public function index(ArtworkRepository $artworkRepository): Response
     {
@@ -27,8 +27,8 @@ class ArtworkController extends AbstractController
 
 
     /**
-     * @Route("/new", name="admin.product.form")
-     * @Route("/update/{id}", name="admin.product.form.update", methods={"GET","POST"})
+     * @Route("/new", name="admin.artwork.form")
+     * @Route("/update/{id}", name="admin.artwork.form.update")
      */
     public function form(Request $request, int $id = null, ArtworkRepository $artworkRepository): Response
     {
@@ -58,7 +58,7 @@ class ArtworkController extends AbstractController
             $entityManager->flush();
 
             // redirection
-            return $this->redirectToRoute('artwork.index');
+            return $this->redirectToRoute('admin.artwork.index');
         }
 
         return $this->render('admin/artwork/new.html.twig', [
@@ -67,7 +67,7 @@ class ArtworkController extends AbstractController
     }
 
     // /**
-    //  * @Route("/new", name="artwork.new", methods={"GET","POST"})
+    //  * @Route("/new", name="admin.artwork.form", methods={"GET","POST"})
     //  */
     // public function new(Request $request): Response
     // {
@@ -80,7 +80,7 @@ class ArtworkController extends AbstractController
     //         $entityManager->persist($artwork);
     //         $entityManager->flush();
 
-    //         return $this->redirectToRoute('artwork.index');
+    //         return $this->redirectToRoute('admin.artwork.index');
     //     }
 
     //     return $this->render('admin/artwork/new.html.twig', [
@@ -90,7 +90,7 @@ class ArtworkController extends AbstractController
     // }
 
     /**
-     * @Route("/{id}", name="artwork.show", methods={"GET"})
+     * @Route("/{id}", name="admin.artwork.show", methods={"GET"})
      */
     public function show(Artwork $artwork): Response
     {
@@ -100,7 +100,7 @@ class ArtworkController extends AbstractController
     }
 
     // /**
-    //  * @Route("/{id}/edit", name="artwork.edit", methods={"GET","POST"})
+    //  * @Route("/{id}/edit", name="admin.artwork.form.update", methods={"GET","POST"})
     //  */
     // public function edit(Request $request, Artwork $artwork): Response
     // {
@@ -110,7 +110,7 @@ class ArtworkController extends AbstractController
     //     if ($form->isSubmitted() && $form->isValid()) {
     //         $this->getDoctrine()->getManager()->flush();
 
-    //         return $this->redirectToRoute('artwork.index');
+    //         return $this->redirectToRoute('admin.artwork.index');
     //     }
 
     //     return $this->render('admin/artwork/edit.html.twig', [
@@ -120,7 +120,7 @@ class ArtworkController extends AbstractController
     // }
 
     /**
-     * @Route("/{id}", name="artwork.delete", methods={"DELETE"})
+     * @Route("/{id}", name="admin.artwork.delete", methods={"DELETE"})
      */
     public function delete(Request $request, Artwork $artwork): Response
     {
@@ -130,6 +130,6 @@ class ArtworkController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('artwork.index');
+        return $this->redirectToRoute('admin.artwork.index');
     }
 }
