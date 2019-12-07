@@ -4,8 +4,10 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 		<title>
-			{% block title %}Welcome!
+			{% block title %}
+				{{ sitename }}
 			{% endblock %}
 		</title>
 
@@ -33,8 +35,15 @@
 				</div>
 			</section>
 		{% endblock %}
-		{{ include('default/_flash_messages.html.twig') }}
-		{% block body %}{% endblock %}
+		
+        {{ include('default/_flash_messages.html.twig') }}
+
+		<div class="container">
+			{% block body %}
+				Empty Body
+			{% endblock %}
+		</div>
+
 		{% block footer %}
 			<footer class="footer">
 				<div class="container">
@@ -46,6 +55,7 @@
 				</div>
 			</footer>
 		{% endblock %}
+
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}

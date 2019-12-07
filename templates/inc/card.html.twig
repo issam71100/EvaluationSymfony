@@ -1,9 +1,10 @@
 <div class="card mb-5">
 	<div class="card-img">
-		<img src="{{ asset('images/peinture.jpg') }}" class="img-responsive w-100" alt="">
+		<img src="{{ artwork.image }}" class="img-responsive w-100" alt="">
 	</div>
 	<div class="card-body">
-		<h5 class="card-title text-center">TEST</h5>
+		<h5 class="card-title text-center">{{ artwork.name }}</h5>
+		<p class="card-text">{{ artwork.description |truncate(10) }}</p>
 		<br>
 		<a href="#" class="btn btn-primary w-100">Voir</a>
 	</div>

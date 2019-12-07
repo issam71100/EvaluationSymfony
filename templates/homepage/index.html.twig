@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Page d'accueil{% endblock %}
+{% block title %}
+	{{ parent() }} - Page d'accueil
+{% endblock %}
 
 
 {% block body %}
@@ -9,7 +11,7 @@
 			<h2 class="title">Oeuvres</h2>
 			<div class="row">
 				{% set i = 0%}
-				{% for i in 0..10 %}
+				{% for artwork in artworks %}
 					<div class="col-md-4 col-sm-6 col-xs-12">
 						{% include 'inc/card.html.twig' %}
 					</div>
