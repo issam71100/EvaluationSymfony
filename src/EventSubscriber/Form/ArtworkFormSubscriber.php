@@ -38,8 +38,9 @@ class ArtworkFormSubscriber implements EventSubscriberInterface
 		    'data_class' => null, // éviter une erreur lors de la modification d'une entité
             'constraints' => $constraints,
             'attr' => [
-                'accept' => "image/*",
-            ]
+				'accept' => "image/*",
+				'data-src' => $entity->getId() ? $entity->prevImage : ""
+			],
 		]);
 		
         //dd($model, $form, $entity);

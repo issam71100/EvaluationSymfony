@@ -172,3 +172,41 @@ h1,h2,h3,h4,h5,h6,ul {
     padding: 20px;
     box-shadow: 5px 6px 10px gray;
 }
+
+
+form input[type="file"]{
+    display: none;
+}
+form .custom-file {
+    height: 300px;
+}
+form .custom-file .custom-file-label{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    pointer-events: none;
+}
+form .custom-file .custom-file-label img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    background-color: white;
+}
+
+form .custom-file .custom-file-label::after{
+    right: 2rem;
+    top: 2rem;
+    border-radius: 50px;
+    width: 120px;
+    content: "Upload";
+    text-align: center;
+    pointer-events: all;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    transition: 1s background cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+}
+
+form .custom-file .custom-file-label:hover::after{
+    background: rgba(0,0,0,0.3);
+}

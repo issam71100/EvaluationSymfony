@@ -5,14 +5,14 @@
 {% block body %}
     <h1>Artwork index</h1>
 
-    <table class="table">
-        <thead>
+    <table class="table table-striped table-dark">
+        <thead class="bg-primary">
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,8 +23,8 @@
                 <td>{{ artwork.description }}</td>
                 <td>{{ artwork.image }}</td>
                 <td>
-                    <a href="{{ path('admin.artwork.show', {'id': artwork.id}) }}">show</a>
-                    <a href="{{ path('admin.artwork.form.update', {'id': artwork.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('admin.artwork.show', {'id': artwork.id}) }}">show</a>
+                    <a class="btn btn-warning" href="{{ path('admin.artwork.form.update', {'id': artwork.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
