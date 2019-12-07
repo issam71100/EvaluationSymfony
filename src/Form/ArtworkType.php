@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Artwork;
 use App\Form\PlaceType;
 use App\Entity\Category;
+use App\EventSubscriber\Form\ArtworkFormSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -46,20 +47,6 @@ class ArtworkType extends AbstractType
                     ])
                 ]
             ])
-            ->add('image', FileType::class, [
-                'constraints' => [
-                    new NotBlank([
-                        'message' => "L'image est obligatoire"
-                    ]),
-                    new Image([
-                        'mimeTypesMessage' => "Vous devez sélectionner une image",
-                        'mimeTypes' => ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp']
-                    ])
-                ],
-                'attr' => [
-                    'accept' => "image/*",
-                ]
-            ])
             ->add('place', PlaceType::class)
             // ->add('category_type', ChoiceType::class, [
             //     'mapped' => false,
@@ -91,6 +78,8 @@ class ArtworkType extends AbstractType
         //         'hidden' => true
         //     ]
         // ]);
+
+        $builder->addEventSubscriber(new ArtworkFormSubscriber());
     }
 
     public function configureOptions(OptionsResolver $resolver)

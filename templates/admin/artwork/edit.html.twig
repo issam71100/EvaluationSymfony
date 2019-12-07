@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Artwork</h1>
 
-    {{ include('artwork/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/artwork/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('artwork.index') }}">back to list</a>
 
-    {{ include('artwork/_delete_form.html.twig') }}
+    {{ include('admin/artwork/_delete_form.html.twig') }}
 {% endblock %}
