@@ -44,7 +44,6 @@ class ArtworkRepository extends ServiceEntityRepository
             ->where('c.slug = :slug')
             ->setParameter('slug', $slug)
             ->getQuery()
-            ->getResult()
         ;
     }
     

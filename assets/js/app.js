@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 require('../css/app.css');
 import ArtworkForm from "./ArtworkForm";
 import FileUpload from "./FileUpload";
+import CategoryFilter from "./CategoryFilter";
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 import 'bootstrap';
@@ -20,3 +21,4 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
 const artworkForm = new ArtworkForm();
 const fileUplaod = new FileUpload();
+const categoryFilter = new CategoryFilter();

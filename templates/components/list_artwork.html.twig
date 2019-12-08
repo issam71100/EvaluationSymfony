@@ -1,6 +1,12 @@
 <section class="shop-landing">
 	<div class="container">
 		<h2 class="title">{{ title }}</h2>
+
+		{% if categories | length > 0 %}
+			{% include 'components/filters.html.twig' with {'categories': categories} only%}
+		{% endif %}
+
+
 		<div class="row">
 			{% set i = 0%}
 			{% for artwork in artworks %}
