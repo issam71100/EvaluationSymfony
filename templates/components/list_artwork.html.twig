@@ -2,7 +2,7 @@
 	<div class="container">
 		<h2 class="title">{{ title }}</h2>
 
-		{% if categories | length > 0 %}
+		{% if categories is defined %}
 			{% include 'components/filters.html.twig' with {'categories': categories} only%}
 		{% endif %}
 
