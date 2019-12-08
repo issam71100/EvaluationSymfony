@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -48,6 +50,16 @@ class Artwork
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Exposition", mappedBy="artworks")
+     */
+    private $expositions;
+
+    public function __construct()
+    {
+        $this->expositions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -122,6 +134,34 @@ class Artwork
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Exposition[]
+     */
+    public function getExpositions(): Collection
+    {
+        return $this->expositions;
+    }
+
+    public function addExposition(Exposition $exposition): self
+    {
+        if (!$this->expositions->contains($exposition)) {
+            $this->expositions[] = $exposition;
+            $exposition->addArtwork($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExposition(Exposition $exposition): self
+    {
+        if ($this->expositions->contains($exposition)) {
+            $this->expositions->removeElement($exposition);
+            $exposition->removeArtwork($this);
+        }
 
         return $this;
     }
