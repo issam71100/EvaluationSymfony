@@ -46,6 +46,13 @@ class ArtworkRepository extends ServiceEntityRepository
             ->getQuery()
         ;
     }
+
+    public function findAllArtworks()
+    {
+        return $this->createQueryBuilder('a')
+            ->getQuery()
+        ;
+    }
     
     public function findBySlug($slug): ?Artwork
     {

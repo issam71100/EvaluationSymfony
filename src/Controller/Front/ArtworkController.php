@@ -49,14 +49,21 @@ class ArtworkController extends AbstractController
 
         $categories = $categoryRepository->findAllCategoryName();
 
-        $view = $this->renderView('components/ajax_list_artwork.html.twig', [
-            'artworks' => $artworkRepository->findByCategory($slug)->getArrayResult(),
-        ]);
+        if($slug == "tous"){
+            $view = $this->renderView('components/ajax_list_artwork.html.twig', [
+                'artworks' => $artworkRepository->findAllArtworks()->getArrayResult(),
+            ]); 
+        }
+        else{
+            $view = $this->renderView('components/ajax_list_artwork.html.twig', [
+                'artworks' => $artworkRepository->findByCategory($slug)->getArrayResult(),
+            ]);
+        }
 
         $response = [
             'view' => $view
-		];
-
+        ];
+        
         return new JsonResponse($response);
     }
 

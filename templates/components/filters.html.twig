@@ -1,4 +1,5 @@
 <div class="filters">
+	<span class="filter-element" data-category="tous">Tous</span>
 	{% for category in categories %}
 		<span class="filter-element" data-category="{{ category.slug }}">{{ category.name }}</span>
 	{% endfor %}

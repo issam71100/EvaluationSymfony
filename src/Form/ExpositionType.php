@@ -25,6 +25,17 @@ class ExpositionType extends AbstractType
 
             ])
             ->add('place', PlaceType::class)
+            ->add('artworks', EntityType::class, [
+                'class' => Artwork::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => "Vous devez sélectionner une catégorie",
+                    ])
+                ]
+            ]);
         ;
     }
 
