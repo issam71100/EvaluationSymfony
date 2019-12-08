@@ -29,7 +29,7 @@ class ArtworkFixtures extends Fixture implements DependentFixtureInterface
             $artwork
                 ->setName($faker->unique()->country)
                 ->setDescription($faker->text)
-                ->setImage($faker->imageUrl)
+                ->setImage('peinture.jpg')
                 ->setPlace($place);
 
             // récupération d'une référence créée dans CategoryFixtures

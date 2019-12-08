@@ -39,7 +39,7 @@ class ArtworkFormSubscriber implements EventSubscriberInterface
             'constraints' => $constraints,
             'attr' => [
 				'accept' => "image/*",
-				'data-src' => $entity->getId() ? $entity->prevImage : ""
+				'data-src' => $entity->getId() ? '/uploads/img/artworks/'.$entity->prevImage : ""
 			],
 		]);
 		

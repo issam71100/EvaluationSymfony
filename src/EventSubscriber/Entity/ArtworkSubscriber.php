@@ -9,6 +9,7 @@ use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Request;
 
 class ArtworkSubscriber implements EventSubscriber
 {
@@ -56,10 +57,15 @@ class ArtworkSubscriber implements EventSubscriber
 			}
 
 			// transfert d'image
+			$request = Request::createFromGlobals();
+
 			$image = $entity->getImage();
+			if($request->files->has('artwork')){
+				$image = $request->files->get('artwork')['image'];
+			}
 
 			if ($image instanceof UploadedFile) {
-				$this->fileService->upload($image, 'img/product');
+				$this->fileService->upload($image, 'uploads/img/artworks');
 
 				// mise à jour de la propriété image
 				$entity->setImage($this->fileService->getFileName());
@@ -91,14 +97,22 @@ class ArtworkSubscriber implements EventSubscriber
 			return;
 		} else {
 			// si une image a été sélectionnée
-			if ($entity->getImage() instanceof UploadedFile) {
+			$request = Request::createFromGlobals();
+
+			$image = $entity->getImage();
+			if($request->files->has('artwork')){
+				$image = $request->files->get('artwork')['image'];
+			}
+
+			if ($image instanceof UploadedFile) {
 				// transfert de la nouvelle image
-				$this->fileService->upload($entity->getImage(), 'uploads/img/artwork');
+				$this->fileService->upload($image, 'uploads/img/artworks');
 				$entity->setImage($this->fileService->getFileName());
 
 				// supprimer l'ancienne image
-				if (file_exists("img/product/{$entity->prevImage}")) {
-					$this->fileService->remove('img/product', $entity->prevImage);
+				if (file_exists("uploads/img/artworks/{$entity->prevImage}") && $entity->prevImage != "peinture.jpg") {
+					dump($entity->prevImage);
+					$this->fileService->remove('uploads/img/artworks/', $entity->prevImage);
 				}
 			}
 			// si aucune image n'a été sélectionnée

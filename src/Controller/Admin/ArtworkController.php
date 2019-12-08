@@ -32,32 +32,19 @@ class ArtworkController extends AbstractController
      */
     public function form(Request $request, int $id = null, ArtworkRepository $artworkRepository): Response
     {
-        // si l'id est nul, une insertion est exécutée, sinon une modification est exécutée
         $model = $id ? $artworkRepository->find($id) : new Artwork();
         $form = $this->createForm(ArtworkType::class, $model);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //dd($form->getData());
-
-            // message de confirmation
             $message = $model->getId() ? "L'oeuvre a été modifié" : "Le produit a été ajouté";
 
-            // message stocké en session
             $this->addFlash('notice', $message);
 
-            /*
-			 * insertion dans la base de données
-			 *  - persist: méthode déclenchée uniquement lors d'une insertion
-			 *  - lors d'une mise à jour, aucune méthode n'est requise
-			 *  - remove: méthode déclenchée uniquement lors d'une suppression
-			 *  - flush: exécution des requêtes SQL
-			 */
             $entityManager = $this->getDoctrine()->getManager();
             $model->getId() ? null : $entityManager->persist($model);
             $entityManager->flush();
 
-            // redirection
             return $this->redirectToRoute('admin.artwork.index');
         }
 
