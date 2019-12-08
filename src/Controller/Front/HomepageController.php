@@ -13,7 +13,7 @@ class HomepageController extends AbstractController
      */
     public function index(ArtworkRepository $artworkRepository)
     {
-        return $this->render('homepage/index.html.twig', [
+        return $this->render('front/homepage/index.html.twig', [
             'artworks' => $artworkRepository->findAll(),
         ]);
     }

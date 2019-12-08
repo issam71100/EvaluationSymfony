@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artwork{% endblock %}
+
+{% block body %}
+    <h1>Artwork</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Description</th>
+                <td>{{ artwork.description }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>
+					<img src="{{ asset("uploads/img/artworks/" ~ artwork.image )}}" alt="" srcset="">
+				</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('artwork.index') }}">Revenir à la liste des Oeuvres</a>
+{% endblock %}

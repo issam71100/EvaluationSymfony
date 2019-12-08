@@ -19,24 +19,15 @@
 
 	<body>
 		{% block header %}
-			{% include 'inc/nav.html.twig' %}
+			{% include 'components/nav.html.twig' %}
 			<section class="header-image">
-				<div class="book-header">
-					<div class="container">
-						<div class="row">
-							<div class="book-text">
-								<h1>Tito Salgado</h1>
-								<div id="typed-strings">
-									<h3>Bienvenue sur mon site personnelle</h3>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div class="book-text">
+					<h1>{{sitetitle}}</h1>
 				</div>
 			</section>
 		{% endblock %}
-		
-        {{ include('default/_flash_messages.html.twig') }}
+
+		{{ include('components/_flash_messages.html.twig') }}
 
 		<div class="container">
 			{% block body %}

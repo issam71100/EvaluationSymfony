@@ -5,3 +5,5 @@ twig:
 
     globals:
         sitename: Les oeuvre de TITO SALGADO
+        sitetitle: Les oeuvre de TITO SALGADO
+        sitesubtitle: BIENVENUE SUR MON SITE PERSONNELLE

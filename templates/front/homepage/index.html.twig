@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Page d'accueil
+{% endblock %}
+
+
+{% block body %}
+	{% include 'components/list_artwork.html.twig' with {'artworks': artworks, 'title': 'Oeuvres'} only%}
+{% endblock %}

@@ -30,7 +30,7 @@ class ExpositionFixtures extends Fixture implements DependentFixtureInterface
                 ->setName($faker->unique()->name)
                 ->setDescription($faker->text)
                 ->setPlace($place)
-                ->setDate(new DateTime())
+                ->setDate($faker->dateTimeBetween('-1 month','+1 month'))
                 ;
 
             for ($j = 0; $j < 3; $j++) {

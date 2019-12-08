@@ -1,0 +1,17 @@
+<div class="card">
+	<div class="card-img">
+		{% if  exposition.artworks | length > 0 %}
+			<img src="{{ asset('uploads/img/artworks/' ~ exposition.artworks.0.image) }}" class="img-responsive w-100" alt="">
+		{% else %}
+			<img src="{{ asset('uploads/img/artworks/peinture.jpg') }}" class="img-responsive w-100" alt="">
+		{% endif %}
+
+	</div>
+	<div class="card-body">
+		<h5 class="card-title text-center">{{ exposition.name }}</h5>
+		<p class="card-text">{{ exposition.description |truncate(10) }}</p>
+		<span class="card-date">{{exposition.date | date("d/m/Y", "Europe/Paris")}}</span>
+		<br>
+		<a href="{{  path('exposition.show', {'slug': exposition.slug}) }}" class="btn btn-primary w-100">Voir</a>
+	</div>
+</div>

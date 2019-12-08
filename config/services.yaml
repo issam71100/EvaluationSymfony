@@ -28,5 +28,8 @@ services:
     App\EventSubscriber\Entity\ArtworkSubscriber:
         tags: [ 'doctrine.event_subscriber' ]
         
+    App\EventSubscriber\Entity\CategorySubscriber:
+        tags: [ 'doctrine.event_subscriber' ]
+        
     App\EventSubscriber\Entity\ExpositionSubscriber:
         tags: [ 'doctrine.event_subscriber' ]

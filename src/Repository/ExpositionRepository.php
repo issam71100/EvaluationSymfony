@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Exposition;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -22,29 +23,28 @@ class ExpositionRepository extends ServiceEntityRepository
     // /**
     //  * @return Exposition[] Returns an array of Exposition objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findFutureExpositons()
     {
         return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('e.date >= :date')
+            ->setParameter('date', new DateTime())
+            ->orderBy('e.date', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
-    /*
-    public function findOneBySomeField($value): ?Exposition
+    
+    public function findBySlug($slug): ?Exposition
     {
         return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('e.slug = :slug')
+            ->setParameter('slug', $slug)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+    
 }

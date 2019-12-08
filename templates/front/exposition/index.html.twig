@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ExpositionController!{% endblock %}
+
+{% block body %}
+	{% include 'components/list_expo.html.twig' with {'expositions': expositions, 'title': 'Prochianes Expositions'} only%}
+{% endblock %}

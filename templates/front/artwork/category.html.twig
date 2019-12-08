@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArtworkController!{% endblock %}
+
+{% block body %}
+	{% include 'components/list_artwork.html.twig' with {'artworks': artworks, 'title': 'Toutes nos oeuvres'} only%}
+{% endblock %}

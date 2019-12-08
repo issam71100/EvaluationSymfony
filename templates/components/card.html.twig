@@ -6,6 +6,6 @@
 		<h5 class="card-title text-center">{{ artwork.name }}</h5>
 		<p class="card-text">{{ artwork.description |truncate(10) }}</p>
 		<br>
-		<a href="#" class="btn btn-primary w-100">Voir</a>
+		<a href="{{path('artwork.show', {'slug': artwork.slug})}}" class="btn btn-primary w-100">Voir</a>
 	</div>
 </div>

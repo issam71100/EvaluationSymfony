@@ -36,15 +36,25 @@ class ArtworkRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Artwork
+    
+    public function findByCategory($slug)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
+            ->join('a.category', 'c')
+            ->where('c.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+    public function findBySlug($slug): ?Artwork
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.slug = :slug')
+            ->setParameter('slug', $slug)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
 }
