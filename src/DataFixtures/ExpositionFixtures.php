@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Place;
 use App\Entity\Exposition;
+use DateTime;
 use Faker\Factory as Faker;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -28,7 +29,9 @@ class ExpositionFixtures extends Fixture implements DependentFixtureInterface
             $exposition
                 ->setName($faker->unique()->name)
                 ->setDescription($faker->text)
-                ->setPlace($place);
+                ->setPlace($place)
+                ->setDate(new DateTime())
+                ;
 
             for ($j = 0; $j < 3; $j++) {
                 $randomArtwork = random_int(0, 19);
