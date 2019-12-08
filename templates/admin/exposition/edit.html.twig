@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Exposition{% endblock %}
+
+{% block body %}
+    <h1>Edit Exposition</h1>
+
+    {{ include('admin/exposition/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin.exposition.index') }}">back to list</a>
+
+    {{ include('admin/exposition/_delete_form.html.twig') }}
+{% endblock %}

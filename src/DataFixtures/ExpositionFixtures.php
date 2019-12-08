@@ -2,41 +2,42 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Artwork;
 use App\Entity\Place;
+use App\Entity\Exposition;
+use Faker\Factory as Faker;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Faker\Factory as Faker;
 
-class ArtworkFixtures extends Fixture implements DependentFixtureInterface
+
+class ExpositionFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
         // instancier faker
         $faker = Faker::create('fr_FR');
 
-        // pour remplir la table, créer des objets puis les persister
-        for ($i = 0; $i < 20; $i++) {
-            $artwork = new Artwork();
+        for ($i = 0; $i < 10; $i++) {
+            $exposition = new Exposition();
             $place = new Place();
 
             $place
                 ->setStreet($faker->streetAddress)
                 ->setZipCode($faker->randomDigit)
                 ->setCountry($faker->country);
-
-            $artwork
-                ->setName($faker->unique()->country)
+            $exposition
+                ->setName($faker->unique()->name)
                 ->setDescription($faker->text)
-                ->setImage('peinture.jpg')
                 ->setPlace($place);
 
-            $randomCategory = random_int(0, 2);
-            $artwork->setCategory($this->getReference("category$randomCategory"));
-
-            $this->addReference("artwork$i", $artwork);
-            $manager->persist($artwork);
+            for ($j = 0; $j < 3; $j++) {
+                $randomArtwork = random_int(0, 19);
+                while ($exposition->getArtworks()->contains($this->getReference("artwork$randomArtwork"))) {
+                    $randomArtwork = random_int(0, 19);
+                }
+                $exposition->addArtwork($this->getReference("artwork$randomArtwork"));
+            }
+            $manager->persist($exposition);
         }
 
         $manager->flush();
@@ -45,7 +46,7 @@ class ArtworkFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return array(
-            CategoryFixtures::class,
+            ArtworkFixtures::class,
         );
     }
 }

@@ -36,7 +36,7 @@ class Artwork
     private $place;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="artworks")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="artworks", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
@@ -52,7 +52,7 @@ class Artwork
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Exposition", mappedBy="artworks")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Exposition", mappedBy="artworks", cascade={"persist"})
      */
     private $expositions;
 

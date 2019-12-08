@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Exposition{% endblock %}
+
+{% block body %}
+    <h1>Create new Exposition</h1>
+
+    {{ include('admin/exposition/_form.html.twig') }}
+
+    <a href="{{ path('admin.exposition.index') }}">back to list</a>
+{% endblock %}
