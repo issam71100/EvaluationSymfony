@@ -7,8 +7,8 @@ Please check the official symfony installation guide for server requirements bef
 
 **Clone the repository**
 
-    git@github.com:issam71100/EvaluationSymfony.git
-    
+    git clone git@github.com:issam71100/EvaluationSymfony.git
+
 Or 
 
     git clone https://github.com/issam71100/EvaluationSymfony.git
