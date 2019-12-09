@@ -4,26 +4,34 @@
 {% endblock %}
 
 {% block header %}
-	<section class="header-image" style="background-image : url('{{ asset("uploads/img/artworks/" ~ artwork.image )}}');">
+	<section class="header-image" style="background-image : url('{{ asset('uploads/img/artworks/' ~ artwork.image )}}');">
 		<div class="book-text">
 			<h1>{{sitetitle}}</h1>
 		</div>
 	</section>
 {% endblock %}
 {% block body %}
-	<h1>Artwork</h1>
+	<h1 class="mt-5 mb-3">Artwork</h1>
 
 	<div class="text">
-		<b>Description :</b> {{ artwork.description }}
-		<b>Dessiné à :</b> {{ artwork.place.street }}, {{ artwork.place.zipCode }} {{ artwork.place.city }}, {{ artwork.place.country }}
-            {% dump artwork.place  %}
+		<p>
+			<b>Description :</b>
+			{{ artwork.description }}</p>
+		<p>
+			<b>Dessiné à :</b>
+			{{ artwork.place.street }},
+			{{ artwork.place.zipCode }}
+			{{ artwork.place.city }},
+			{{ artwork.place.country }}</p>
 
-    </div>
-	<table class="table">
-		<tbody>
-			<tr></tr>
-		</tbody>
-	</table>
+		<hr>
+		<p>
+			<b>Image complète :</b>
+		</p>
 
-	<a href="{{ path('artwork.index') }}">Revenir à la liste des Oeuvres</a>
+		<img src="{{asset("uploads/img/artworks/" ~ artwork.image )}}" alt="" srcset="">
+	</div>
+
+
+	<a class="btn btn-primary mb-5" href="{{ path('artwork.index') }}">Revenir à la liste des Oeuvres</a>
 {% endblock %}
