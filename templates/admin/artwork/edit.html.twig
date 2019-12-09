@@ -2,6 +2,14 @@
 
 {% block title %}Edit Artwork{% endblock %}
 
+{% block header %}
+	<section class="header-image" style="background-image : url('{{ asset('uploads/img/artworks/' ~ artwork.image )}}');">
+		<div class="book-text">
+			<h1>{{sitetitle}}</h1>
+		</div>
+	</section>
+{% endblock %}
+
 {% block body %}
     <h1>Edit Artwork</h1>
 

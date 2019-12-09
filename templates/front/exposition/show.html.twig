@@ -14,7 +14,7 @@
 		{{ exposition.description }}
 	</p>
 </div>
-{% include 'components/list_expo.html.twig' with {'artworks': exposition.artworks, 'title': 'Oeuvres présentent à l\'exposition'} only%}
+{% include 'components/list_artwork.html.twig' with {'artworks': exposition.artworks, 'title': 'Oeuvres présentent à l\'exposition'} only%}
 
 	<a class="btn btn-primary mb-5" href="{{ path('exposition.index') }}">Revenir aux expositions</a>
 {% endblock %}
