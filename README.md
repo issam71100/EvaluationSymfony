@@ -5,7 +5,7 @@
 Please check the official symfony installation guide for server requirements before you start. [Official Documentation](https://symfony.com/doc/current/setup.html)
 
 
-## Clone the repository
+**Clone the repository**
 
     git@github.com:issam71100/EvaluationSymfony.git
 ##
@@ -13,50 +13,50 @@ Or
 
     git clone https://github.com/issam71100/EvaluationSymfony.git
     
-## Switch to the repo folder
+**Switch to the repo folder**
 
     cd EvaluationSymfony
 
-## Install all the dependencies using composer
+**Install all the dependencies using composer**
 
     composer install
     
-## Install node dependencies using yarn or nmp
+**Install node dependencies using yarn or nmp**
 
     yarn install
-##
+
 Or
 
     npm install
 
-## Generate Webpack Assets
+**Generate Webpack Assets**
 
     yarn build
-##
+
 Or
 
     npm run build
 
-## Run the database migrations (*Set the database connection in .env before migrating*)
+**Run the database migrations (*Set the database connection in .env before migrating*)**
 
     php bin/console doctrine:migrations:migrate
  
 
-## Generate Fixtures
+**Generate Fixtures**
 
     php bin/console doctrine:fixtures:load
 
 
-## Start the local development server
+**Start the local development server**
 
     php bin/console server:run
 
-## You can now access the server at http://localhost:8000
+***You can now access the server at http://localhost:8000***
 
 
 # Front de Application
 
-## **Homepage ( route => '/' )**
+**Homepage ( route => '/' )**
 
 * Diaporama de 9 images des 3 dernieres oeuvres de chaques catégories 
 * 3 Dernieres oeuvres ajoutés de chaques catégories
