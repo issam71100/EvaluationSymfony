@@ -47,6 +47,19 @@ class ArtworkRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findByCategoryLimited($slug, $nb)
+    {
+        return $this->createQueryBuilder('a')
+            ->join('a.category', 'c')
+            ->where('c.slug = :slug')
+            ->orderBy('a.id', 'DESC')
+            ->setParameter('slug', $slug)
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findAllArtworks()
     {
         return $this->createQueryBuilder('a')

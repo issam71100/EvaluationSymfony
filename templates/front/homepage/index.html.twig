@@ -7,5 +7,17 @@
 
 
 {% block body %}
-	{% include 'components/list_artwork.html.twig' with {'artworks': artworks, 'title': 'Oeuvres'} only%}
+	<div class="diapo">
+		{% for cat in categories_names %}
+			{% for artwork in artworks[cat.slug] %}
+			<div class="diapo-slide">
+				<a href="{{path('artwork.show', {'slug': artwork.slug})}}" class="btn btn-primary">{{artwork.name}}</a>
+				<img src="{{ asset('uploads/img/artworks/' ~ artwork.image)}}">
+			</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+	{% for cat in categories_names %}
+		{% include 'components/list_artwork.html.twig' with {'artworks': artworks[cat.slug], 'title': cat.name } only %}
+	{% endfor %}
 {% endblock %}
