@@ -58,12 +58,7 @@ Or
 
 ## **Homepage ( route => '/' )**
 
-## *Section 1*
-
 * Diaporama de 9 images des 3 dernieres oeuvres de chaques catégories 
-
-## *Section 2,3 et 4*
-
 * 3 Derniere oeuvre ajouté de chaques catégories
 
 ## **Page Oeuvre (route => '/artworks)**
