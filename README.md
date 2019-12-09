@@ -49,7 +49,13 @@ Or
 
 **Start the local development server**
 
-    php bin/console server:run
+    symfony server
+
+Or
+
+    php -S localhost:8000 -t public/
+
+
 
 ***You can now access the server at http://localhost:8000***
 
