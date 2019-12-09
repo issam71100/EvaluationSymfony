@@ -24,7 +24,8 @@ class ArtworkFixtures extends Fixture implements DependentFixtureInterface
             $place
                 ->setStreet($faker->streetAddress)
                 ->setZipCode($faker->randomDigit)
-                ->setCountry($faker->country);
+                ->setCountry($faker->country)
+                ->setCity($faker->city);
 
             $artwork
                 ->setName($faker->unique()->country)

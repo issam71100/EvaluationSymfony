@@ -25,6 +25,7 @@ class ExpositionFixtures extends Fixture implements DependentFixtureInterface
             $place
                 ->setStreet($faker->streetAddress)
                 ->setZipCode($faker->randomDigit)
+                ->setCity($faker->city)
                 ->setCountry($faker->country);
             $exposition
                 ->setName($faker->unique()->name)

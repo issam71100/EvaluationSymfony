@@ -1,24 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Artwork{% endblock %}
+{% block title %}Artwork
+{% endblock %}
 
+{% block header %}
+	<section class="header-image" style="background-image : url('{{ asset("uploads/img/artworks/" ~ artwork.image )}}');">
+		<div class="book-text">
+			<h1>{{sitetitle}}</h1>
+		</div>
+	</section>
+{% endblock %}
 {% block body %}
-    <h1>Artwork</h1>
+	<h1>Artwork</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Description</th>
-                <td>{{ artwork.description }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>
-					<img src="{{ asset("uploads/img/artworks/" ~ artwork.image )}}" alt="" srcset="">
-				</td>
-            </tr>
-        </tbody>
-    </table>
+	<div class="text">
+		<b>Description :</b> {{ artwork.description }}
+		<b>Dessiné à :</b> {{ artwork.place.street }}, {{ artwork.place.zipCode }} {{ artwork.place.city }}, {{ artwork.place.country }}
+            {% dump artwork.place  %}
 
-    <a href="{{ path('artwork.index') }}">Revenir à la liste des Oeuvres</a>
+    </div>
+	<table class="table">
+		<tbody>
+			<tr></tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('artwork.index') }}">Revenir à la liste des Oeuvres</a>
 {% endblock %}
