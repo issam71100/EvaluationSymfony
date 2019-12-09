@@ -1,6 +1,6 @@
-# Getting started
+# EvaluationSymfony
 
-## Installation
+**Installation**
 
 Please check the official symfony installation guide for server requirements before you start. [Official Documentation](https://symfony.com/doc/current/setup.html)
 
