@@ -18,8 +18,8 @@
 	</head>
 
 	<body>
+		{% include 'components/nav.html.twig' %}
 		{% block header %}
-			{% include 'components/nav.html.twig' %}
 			<section class="header-image">
 				<div class="book-text">
 					<h1>{{sitetitle}}</h1>
@@ -40,7 +40,8 @@
 				<div class="container">
 					<div class="row text-center">
 						<p class="copyright m-auto">
-							Copyright &copy; 2019 All rights reserved | By issam |    <a href="{{ path('mention.index') }}">Mentions légales</a>
+							Copyright &copy; 2019 All rights reserved | By issam |
+							<a href="{{ path('mention.index') }}">Mentions légales</a>
 						</p>
 					</div>
 				</div>

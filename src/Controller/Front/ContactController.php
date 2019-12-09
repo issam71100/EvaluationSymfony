@@ -33,9 +33,10 @@ class ContactController extends AbstractController
 			// message
 			$message = new \Swift_Message();
 			$message
-				->setFrom('4fac0ec5a7-8d7ce2@inbox.mailtrap.io')
+				->setFrom(['4fac0ec5a7-8d7ce2@inbox.mailtrap.io' => 'Site TITO SALGADO'])
 				->setSubject('Contact')
 				->setContentType('text/html')
+				->setTo([$form->getData()->getEmail() => $form->getData()->getFirstname() . ' '. $form->getData()->getLastname()])
 				->setBody(
 					$twig->render('front/emailing/contact.html.twig', [
 						'data' => $form->getData()

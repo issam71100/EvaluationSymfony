@@ -5,18 +5,26 @@
 	- Page d'accueil
 {% endblock %}
 
-
-{% block body %}
+{% block header %}
 	<div class="diapo">
 		{% for cat in categories_names %}
 			{% for artwork in artworks[cat.slug] %}
-			<div class="diapo-slide">
-				<a href="{{path('artwork.show', {'slug': artwork.slug})}}" class="btn btn-primary">{{artwork.name}}</a>
-				<img src="{{ asset('uploads/img/artworks/' ~ artwork.image)}}">
-			</div>
+				<div class="diapo-slide">
+					<div class="container">
+						<div class="text">
+							<h3>{{artwork.name | truncate(10)}}</h3>
+							<p>{{artwork.description | truncate(10)}}</p>
+							<a href="{{path('artwork.show', {'slug': artwork.slug})}}" class="btn btn-primary">Voir</a>
+						</div>
+						<img src="{{ asset('uploads/img/artworks/' ~ artwork.image)}}">
+					</div>
+				</div>
 			{% endfor %}
 		{% endfor %}
 	</div>
+{% endblock %}
+
+{% block body %}
 	{% for cat in categories_names %}
 		{% include 'components/list_artwork.html.twig' with {'artworks': artworks[cat.slug], 'title': cat.name } only %}
 	{% endfor %}

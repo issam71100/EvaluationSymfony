@@ -263,21 +263,50 @@ form .custom-file .custom-file-label:hover::after{
     z-index: 1;
 }
 
-.diapo .diapo-slide a{
+.diapo .diapo-slide .text{
     position: absolute !important;
     width: fit-content;
     width: -moz-fit-content;
     width: -o-fit-content;
-    height: fit-content;
-    height: -moz-fit-content;
-    height: -o-fit-content;
+    height: fit-content !important;
+    height: -moz-fit-content  !important;
+    height: -o-fit-content  !important;
     top: 0; bottom: 0; left: 0; right: 0;
     margin: auto;
+    z-index: 99;
+}
+.diapo .diapo-slide a{
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: white;
+    background-blend-mode: overlay;
+    z-index: 2;
+    padding: 0px 20px;
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+    display: block;
+    width: fit-content;
+    width: -moz-fit-content;
+    width: -o-fit-content;
+    min-width: 170px;
+}
+.diapo .diapo-slide p{
+    font-size: 1.5rem;
+    color: white;
+    background-blend-mode: overlay;
+    z-index: 2;
+    padding: 0px 20px;
+}
+
+.diapo .diapo-slide h3{
     font-size: 2rem;
     color: white;
     background-blend-mode: overlay;
     z-index: 2;
     padding: 0px 20px;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .diapo .diapo-slide img {
