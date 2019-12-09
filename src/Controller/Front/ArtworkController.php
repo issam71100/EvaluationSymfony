@@ -17,7 +17,7 @@ class ArtworkController extends AbstractController
     public function index(ArtworkRepository $artworkRepository, CategoryRepository $categoryRepository)
     {
         $categories = $categoryRepository->findAllCategoryName();
-        
+
         return $this->render('front/artwork/index.html.twig', [
             'artworks' => $artworkRepository->findAll(),
             'categories' => $categories,
@@ -29,7 +29,11 @@ class ArtworkController extends AbstractController
      */
     public function category(string $slug, ArtworkRepository $artworkRepository)
     {
-        $artworks = $artworkRepository->findByCategory($slug)->getResult();
+        if ($slug == "all") {
+            $artworks  = $artworkRepository->findAll();
+        } else {
+            $artworks = $artworkRepository->findByCategory($slug)->getResult();
+        }
         return $this->render('front/artwork/category.html.twig', [
             'artworks' => $artworks,
             'sitetitle' => $slug,
@@ -39,22 +43,21 @@ class ArtworkController extends AbstractController
     /**
      * @Route("ajax/artworks/{slug}", name="artwork.filter")
      */
-    public function filter(Request $request,string $slug, ArtworkRepository $artworkRepository, CategoryRepository $categoryRepository)
+    public function filter(Request $request, string $slug, ArtworkRepository $artworkRepository, CategoryRepository $categoryRepository)
     {
-        if(!$request->isXmlHttpRequest()){
-			return new JsonResponse([
-				'message' => 'Unauthorized'
-			], JsonResponse::HTTP_FORBIDDEN);
+        if (!$request->isXmlHttpRequest()) {
+            return new JsonResponse([
+                'message' => 'Unauthorized'
+            ], JsonResponse::HTTP_FORBIDDEN);
         }
 
         $categories = $categoryRepository->findAllCategoryName();
 
-        if($slug == "tous"){
+        if ($slug == "tous") {
             $view = $this->renderView('components/ajax_list_artwork.html.twig', [
                 'artworks' => $artworkRepository->findAllArtworks()->getArrayResult(),
-            ]); 
-        }
-        else{
+            ]);
+        } else {
             $view = $this->renderView('components/ajax_list_artwork.html.twig', [
                 'artworks' => $artworkRepository->findByCategory($slug)->getArrayResult(),
             ]);
@@ -63,7 +66,7 @@ class ArtworkController extends AbstractController
         $response = [
             'view' => $view
         ];
-        
+
         return new JsonResponse($response);
     }
 
