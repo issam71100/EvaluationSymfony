@@ -327,3 +327,10 @@ form .custom-file .custom-file-label:hover::after{
     margin-top: 3rem;
     margin-bottom: 3rem;
 }
+
+.d-flex > *{
+    margin-left: 10px ;
+}
+.d-flex > a:first-child{
+    margin-left: 0 ;
+}
