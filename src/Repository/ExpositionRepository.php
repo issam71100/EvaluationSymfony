@@ -34,6 +34,17 @@ class ExpositionRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findArchiveExpositons()
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.date < :date')
+            ->setParameter('date', new DateTime())
+            ->orderBy('e.date', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     
 
     

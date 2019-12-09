@@ -20,8 +20,11 @@ class ExpositionController extends AbstractController
      */
     public function index(ExpositionRepository $expositionRepository): Response
     {
+        $expositions = $expositionRepository->findFutureExpositons();
+        $archives = $expositionRepository->findArchiveExpositons();
         return $this->render('admin/exposition/index.html.twig', [
-            'expositions' => $expositionRepository->findAll(),
+            'expositions' => $expositions,
+            'archives' => $archives,
         ]);
     }
 

@@ -22,9 +22,7 @@
 			</tr>
 		</tbody>
 	</table>
-	{% for artwork in exposition.artworks %}
-		{% dump artwork %}
-	{% endfor %}
+
 	<a href="{{ path('admin.exposition.index') }}">back to list</a>
 
 	<a href="{{ path('admin.exposition.edit', {'id': exposition.id}) }}">edit</a>

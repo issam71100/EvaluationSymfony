@@ -1,37 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Exposition index{% endblock %}
+{% block title %}Exposition index
+{% endblock %}
 
 {% block body %}
-    <h1>Exposition index</h1>
+	<h1 class="mb-2 mt-3 text-center">Index des Expositions</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for exposition in expositions %}
-            <tr>
-                <td>{{ exposition.id }}</td>
-                <td>{{ exposition.name }}</td>
-                <td>{{ exposition.description }}</td>
-                <td>
-                    <a href="{{ path('admin.exposition.show', {'id': exposition.id}) }}">show</a>
-                    <a href="{{ path('admin.exposition.edit', {'id': exposition.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('admin.exposition.new') }}">Create new</a>
+	<h2 class="mb-2 mt-5 text-center">Prochaines expositions</h2>
+	<table class="table table-striped table-dark">
+		<thead class="bg-primary">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Date</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for exposition in expositions %}
+				<tr>
+					<td>{{ exposition.id }}</td>
+					<td>{{ exposition.name }}</td>
+					<td>{{ exposition.description | truncate(10) }}</td>
+					<td>{{ exposition.date | date('d/m/y') }}</td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('admin.exposition.show', {'id': exposition.id}) }}">show</a>
+						<a class="btn btn-warning" href="{{ path('admin.exposition.edit', {'id': exposition.id}) }}">edit</a>
+						{{ include('admin/exposition/_delete_form.html.twig') }}
+                    </td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+
+	<h2 class="mb-2 mt-5 text-center">Archives</h2>
+	<table class="table table-striped table-dark">
+		<thead class="bg-primary">
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Name</th>
+				<th scope="col">Description</th>
+				<th scope="col">Date</th>
+				<th scope="col">actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for exposition in archives %}
+				<tr>
+					<td>{{ exposition.id }}</td>
+					<td>{{ exposition.name }}</td>
+					<td>{{ exposition.description | truncate(10) }}</td>
+					<td>{{ exposition.date | date('d/m/y') }}</td>
+
+					<td>
+						<a class="btn btn-primary" href="{{ path('admin.exposition.show', {'id': exposition.id}) }}">show</a>
+						<a class="btn btn-warning" href="{{ path('admin.exposition.edit', {'id': exposition.id}) }}">edit</a>
+						{{ include('admin/exposition/_delete_form.html.twig') }}
+                    </td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<a href="{{ path('admin.exposition.new') }}">Create new</a>
 {% endblock %}
