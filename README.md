@@ -17,7 +17,7 @@ Or
 
     cd EvaluationSymfony
 
-**Install all the dependencies using composer**
+**Install PHP dependencies using composer**
 
     composer install
     
